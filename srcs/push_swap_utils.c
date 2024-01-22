@@ -6,11 +6,21 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:37:25 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/22 12:44:43 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/22 19:08:59 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+int	ft_tablen(char **tab)
+{
+	int i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
+}
 
 void	ft_lst_display(t_pile **lst)
 {
