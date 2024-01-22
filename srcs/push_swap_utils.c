@@ -6,11 +6,38 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:37:25 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/18 00:49:24 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/22 12:44:43 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	ft_lst_display(t_pile **lst)
+{
+	t_pile	*tmp;
+
+	tmp = *lst;
+	while (tmp != NULL)
+	{
+		ft_printf("%d\n", tmp->content);
+		tmp = tmp->next;
+	}
+}
+
+void	ft_lst_clear(t_pile **lst)
+{
+	t_pile	*tmp;
+
+	if (!lst)
+		return ;
+	tmp = *lst;
+	while (*lst)
+	{
+		tmp = tmp->next;
+		free(*lst);
+		*lst = tmp;
+	}
+}
 
 t_pile	*ft_lst_last(t_pile *lst)
 {

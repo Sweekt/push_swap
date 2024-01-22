@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:12:18 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/22 12:33:17 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/22 12:44:43 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ t_pile	*params_parser(int ac, char **av);
 t_pile	*ft_lst_new(int content);
 void	ft_lst_add_back(t_pile **lst, t_pile *new);
 t_pile	*ft_lst_last(t_pile *lst);
+void	ft_lst_clear(t_pile **lst);
+void	ft_lst_display(t_pile **lst);
 
 #endif

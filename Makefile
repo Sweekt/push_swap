@@ -16,23 +16,29 @@ IBLUE		= \033[44m
 IPURPLE		= \033[45m
 END			= \033[0m
 
-NAME		= push_swap
+NAME		=	push_swap
 
-DISPLAY		= display
+DISPLAY		=	display
 
-FLAGS		= -Wall -Wextra -Werror -I includes/ -I libs/libft -g3 -fsanitize=address
+FLAGS		=	-Wall -Wextra -Werror -I includes/ -I libs/libft -g3 -fsanitize=address
 
-SRCS		=	main.c
-
-OBJS	:=	$(SRCS:%.c=$(OBJS_D)%.o)
+SRCS		=	main.c	\
+				params_parser.c	\
+				push_swap_utils.c
 
 SRCS_D	:=	srcs/
 
 OBJS_D	:=	objs/
 
+OBJS	:=	$(addprefix $(OBJS_D), $(SRCS:.c=.o))
+
+$(OBJS_D)%.o: $(SRCS_D)%.c ${HEADER}
+	@mkdir -p $(@D)
+	@cc ${FLAGS} -c $< -o $@ && echo "  $@"
+
 HEADER		= includes/push_swap.h
 
-all:	libs ${NAME}
+all: libs $(OBJS_D) ${NAME}
 
 ${NAME}:	$(OBJS_D) $(OBJS) Makefile
 			@ cc ${FLAGS} -o $@ ${OBJS} super_libft/libft.a && echo "${GREEN}\n* ${NAME} compilation completed !!!\n${END}"
@@ -40,11 +46,14 @@ ${NAME}:	$(OBJS_D) $(OBJS) Makefile
 libs:
 	${MAKE} -C super_libft
 
+$(OBJS_D):
+	@mkdir -p $@
+
 %.o: %.c ${HEADER}
-	@ cc ${FLAGS} ${HEAD} -c $< -o $@ && echo "  $@"
+	@ cc ${FLAGS} -c $< -o $@ && echo "  $@"
 
 clean:
-	@ ${RM} ${OBJS} $(OBJS_D) && echo "${RED} * object cleared...${END}"
+	@ ${RM} -rf ${OBJS} $(OBJS_D) && echo "${RED} * object cleared...${END}"
 
 fclean: clean
 	@ ${RM} ${NAME} && echo "${RED} * everything is cleared...${END}"
