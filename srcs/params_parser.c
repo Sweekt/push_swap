@@ -6,11 +6,55 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:49:13 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/24 12:24:11 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/24 16:38:25 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+t_pile	*find_unrank(t_pile **pile)
+{
+	t_pile	*tmp;
+
+	tmp = *pile;
+	while (tmp != NULL)
+	{
+		if (tmp->rank == -1)
+			return (tmp);
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
+
+t_pile	*find_smallest(t_pile **pile)
+{
+	t_pile	*smallest;
+	t_pile	*tmp;
+
+	tmp = *pile;
+	smallest = find_unrank(pile);
+	while (tmp != NULL)
+	{
+		if (tmp->content < smallest->content && tmp->rank == -1)
+			smallest = tmp;
+		tmp = tmp->next;
+	}
+	return (smallest);
+}
+
+void	pile_ranker(t_pile **pile)
+{
+	t_pile	*tiny;
+	int i;
+
+	i = 1;
+	while (i < ft_lst_size(pile))
+	{
+		tiny = find_smallest(pile);
+		tiny->rank = i;
+		i++;
+	}
+}
 
 int dupe_checker(t_pile **pile)
 {

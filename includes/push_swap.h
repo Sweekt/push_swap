@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:12:18 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/24 12:24:11 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/24 15:26:31 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_pile
 t_pile	*params_parser(int ac, char **av);
 int		params_checker(int ac, char **av);
 int 	dupe_checker(t_pile **pile);
+void	pile_ranker(t_pile **pile);
 
 // Push Swap Utils
 
@@ -40,6 +41,7 @@ void	ft_lst_display(t_pile **lst);
 
 // Push Swap Utils 2
 
+int 	ft_lst_size(t_pile **lst);
 int		ft_tablen(char **tab);
 int 	ft_is_number(char *str);
 int		ft_is_int(char *str);
