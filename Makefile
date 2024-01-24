@@ -24,7 +24,8 @@ FLAGS		=	-Wall -Wextra -Werror -I includes/ -I libs/libft -g3 -fsanitize=address
 
 SRCS		=	main.c	\
 				params_parser.c	\
-				push_swap_utils.c
+				push_swap_utils.c	\
+				push_swap_utils_2.c
 
 SRCS_D	:=	srcs/
 

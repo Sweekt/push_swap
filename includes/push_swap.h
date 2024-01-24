@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:12:18 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/22 19:08:59 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/24 12:24:11 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,24 @@ typedef struct s_pile
 	struct s_pile	*next;
 }	t_pile;
 
+// Params Parser
+
 t_pile	*params_parser(int ac, char **av);
+int		params_checker(int ac, char **av);
+int 	dupe_checker(t_pile **pile);
+
+// Push Swap Utils
+
 t_pile	*ft_lst_new(int content);
-void	ft_lst_add_back(t_pile **lst, t_pile *new);
 t_pile	*ft_lst_last(t_pile *lst);
+void	ft_lst_add_back(t_pile **lst, t_pile *new);
 void	ft_lst_clear(t_pile **lst);
 void	ft_lst_display(t_pile **lst);
+
+// Push Swap Utils 2
+
 int		ft_tablen(char **tab);
-int		params_checker(int ac, char **av);
+int 	ft_is_number(char *str);
+int		ft_is_int(char *str);
 
 #endif

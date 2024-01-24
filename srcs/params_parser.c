@@ -6,30 +6,45 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:49:13 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/22 19:25:46 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/24 12:24:11 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+int dupe_checker(t_pile **pile)
+{
+	t_pile	*tmp;
+	t_pile	*tmp2;
+
+	tmp = *pile;
+	while (tmp != NULL)
+	{
+		tmp2 = tmp->next;
+		while (tmp2 != NULL)
+		{
+			if (tmp->content == tmp2->content)
+				return (1);
+			tmp2 = tmp2-> next;
+		}
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
 int params_checker(int ac, char **av)
 {
 	int	i;
-	int j;
 
 	i = 0;
 	while (i < ac - 1)
 	{
-		j = 0;
-		while (av[i][j])
-		{
-			if (ft_isdigit(av[i][j]) == 0)
-				return (1);
-			j++;
-		}
+		if (ft_is_number(av[i]) == 0)
+			return (1);
 		if (ft_strlen(av[i]) > 11)
 			return (1);
-
+		if (ft_is_int(av[i]) == 0)
+			return (1);
 		i++;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:24:41 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/22 19:26:22 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/22 19:38:09 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	main(int ac, char **av)
 	if (params_checker(ac, av) == 1)
 		return (write(2, "Error\n", 7), 0);
 	a_pile = params_parser(ac, av);
+	if (dupe_checker(&a_pile) == 1)
+		return (write(2, "Error\n", 7), 0);
 	ft_lst_display(&a_pile);
 	//error_checker();
 }
