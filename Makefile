@@ -22,10 +22,14 @@ DISPLAY		=	display
 
 FLAGS		=	-Wall -Wextra -Werror -I includes/ -I libs/libft -g3 -fsanitize=address
 
-SRCS		=	main.c	\
-				params_parser.c	\
-				push_swap_utils.c	\
-				push_swap_utils_2.c
+SRCS		=	main.c					\
+				params_parser.c			\
+				push_swap_utils.c		\
+				push_swap_utils_2.c		\
+				pile_swap.c				\
+				pile_push.c				\
+				pile_rotate.c			\
+				pile_reverse_rotate.c
 
 SRCS_D	:=	srcs/
 

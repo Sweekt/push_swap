@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:12:18 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/24 15:26:31 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/29 20:11:45 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,32 @@ int 	ft_lst_size(t_pile **lst);
 int		ft_tablen(char **tab);
 int 	ft_is_number(char *str);
 int		ft_is_int(char *str);
+
+// Pile Swap
+
+void	ft_swap(t_pile **pile);
+void	do_sa(t_pile **a_pile);
+void	do_sb(t_pile **b_pile);
+void	do_ss(t_pile **a_pile, t_pile **b_pile);
+
+// Pile Push
+
+void	ft_push(t_pile **a_pile, t_pile **b_pile);
+void	do_pa(t_pile **a_pile, t_pile **b_pile);
+void	do_pb(t_pile **a_pile, t_pile **b_pile);
+
+// Pile Rotate
+
+void	ft_rotate(t_pile **pile);
+void	do_ra(t_pile **a_pile);
+void	do_rb(t_pile **b_pile);
+void	do_rr(t_pile **a_pile, t_pile **b_pile);
+
+// Pile Reverse Rotate
+
+void	ft_reverse_rotate(t_pile **pile);
+void	do_rra(t_pile **a_pile);
+void	do_rrb(t_pile **b_pile);
+void	do_rrr(t_pile **a_pile, t_pile **b_pile);
 
 #endif

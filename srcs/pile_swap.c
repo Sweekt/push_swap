@@ -1,37 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pile_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 12:24:41 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/29 20:11:45 by beroy            ###   ########.fr       */
+/*   Created: 2024/01/29 18:41:40 by beroy             #+#    #+#             */
+/*   Updated: 2024/01/29 19:19:25 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int ac, char **av)
+void	ft_swap(t_pile **pile)
 {
-	t_pile	*a_pile;
-	t_pile	*b_pile;
+	t_pile *tmp;
 
-	b_pile = NULL;
-	if (ac < 2)
-		return (0);
-	if (ac == 2)
-	{
-		av = ft_split(av[1], ' ');
-		ac = ft_tablen(av) + 1;
-	}
-	else
-		av++;
-	if (params_checker(ac, av) == 1)
-		return (write(2, "Error\n", 7), 0);
-	a_pile = params_parser(ac, av);
-	if (dupe_checker(&a_pile) == 1)
-		return (write(2, "Error\n", 7), 0);
-	pile_ranker(&a_pile);
-	ft_lst_display(&a_pile);
+	if (ft_lst_size(pile) < 2)
+		return;
+	tmp = (*pile)->next;
+	(*pile)->next = tmp->next;
+	tmp->next = *pile;
+	*pile = tmp;
+}
+
+void	do_sa(t_pile **a_pile)
+{
+	ft_swap(a_pile);
+	ft_printf("sa\n");
+}
+
+void	do_sb(t_pile **b_pile)
+{
+	ft_swap(b_pile);
+	ft_printf("sb\n");
+}
+
+void	do_ss(t_pile **a_pile, t_pile **b_pile)
+{
+	ft_swap(a_pile);
+	ft_swap(b_pile);
+	ft_printf("ss\n");
 }
