@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:12:18 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/30 19:34:35 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/30 19:39:38 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,6 @@ void	do_rrr(t_pile **a_pile, t_pile **b_pile);
 
 // Push Swap
 
-void	push_swap(t_pile *a_pile, t_pile *b_pile);
+void	push_swap(t_pile **a_pile, t_pile **b_pile);
 
 #endif

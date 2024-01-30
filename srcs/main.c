@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:24:41 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/30 19:39:38 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/30 21:06:22 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ int	main(int ac, char **av)
 		return (write(2, "Error\n", 7), 0);
 	pile_ranker(&a_pile);
 	ft_lst_display(&a_pile);
-	push_swap(a_pile, b_pile);
+	push_swap(&a_pile, &b_pile);
 	ft_lst_display(&a_pile);
 }
