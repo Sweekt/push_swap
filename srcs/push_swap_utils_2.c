@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:59:07 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/30 21:06:22 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/30 21:08:28 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int stack_is_sorted(t_pile **a_pile, t_pile **b_pile)
 	t_pile	*tmp;
 	int 	i;
 
-	if (ft_lst_size(b_pile) == 0)
+	if (ft_lst_size(b_pile) != 0)
 		return (0);
 	tmp = *a_pile;
 	i = 0;
