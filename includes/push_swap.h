@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:12:18 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/29 20:11:45 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/30 19:34:35 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@
 # include <stdlib.h>
 # include "../super_libft/libft.h"
 
+# define MAX_BIN 9
+
 typedef struct s_pile
 {
 	int 			content;
 	int				rank;
+	char			*b_rank;
 	struct s_pile	*next;
 }	t_pile;
 
@@ -41,10 +44,15 @@ void	ft_lst_display(t_pile **lst);
 
 // Push Swap Utils 2
 
+int 	stack_is_sorted(t_pile **a_pile, t_pile **b_pile);
 int 	ft_lst_size(t_pile **lst);
 int		ft_tablen(char **tab);
 int 	ft_is_number(char *str);
 int		ft_is_int(char *str);
+
+// Push Swap Utils 3
+
+char	*ft_itob(unsigned int nbr);
 
 // Pile Swap
 
@@ -72,5 +80,9 @@ void	ft_reverse_rotate(t_pile **pile);
 void	do_rra(t_pile **a_pile);
 void	do_rrb(t_pile **b_pile);
 void	do_rrr(t_pile **a_pile, t_pile **b_pile);
+
+// Push Swap
+
+void	push_swap(t_pile *a_pile, t_pile *b_pile);
 
 #endif

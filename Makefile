@@ -26,10 +26,12 @@ SRCS		=	main.c					\
 				params_parser.c			\
 				push_swap_utils.c		\
 				push_swap_utils_2.c		\
+				push_swap_utils_3.c		\
 				pile_swap.c				\
 				pile_push.c				\
 				pile_rotate.c			\
-				pile_reverse_rotate.c
+				pile_reverse_rotate.c	\
+				push_swap.c
 
 SRCS_D	:=	srcs/
 

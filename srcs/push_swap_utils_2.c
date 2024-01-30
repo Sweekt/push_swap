@@ -6,11 +6,30 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:59:07 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/24 15:26:57 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/30 17:10:06 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+int stack_is_sorted(t_pile **a_pile, t_pile **b_pile)
+{
+	t_pile	*tmp;
+	int 	i;
+
+	if (ft_lst_size(b_pile) != 0)
+		return (0);
+	tmp = *a_pile;
+	i = 0;
+	while (tmp->next != NULL)
+	{
+		if (tmp->rank != i)
+			return (0);
+		i++;
+		tmp = tmp->next;
+	}
+	return (1);
+}
 
 int ft_lst_size(t_pile **lst)
 {

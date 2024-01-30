@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:37:25 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/24 15:51:32 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/30 18:49:20 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_lst_display(t_pile **lst)
 	tmp = *lst;
 	while (tmp != NULL)
 	{
-		ft_printf("Content : %d || Rank : %d\n", tmp->content, tmp->rank);
+		ft_printf("Content : %d || Rank : %d || B_rank : %s\n", tmp->content, tmp->rank, tmp->b_rank);
 		tmp = tmp->next;
 	}
 }
@@ -68,11 +68,12 @@ t_pile	*ft_lst_new(int content)
 {
 	t_pile	*s_new;
 
-	s_new = malloc(sizeof(t_list));
+	s_new = malloc(sizeof(t_pile));
 	if (s_new == NULL)
 		return (s_new);
 	s_new->content = content;
 	s_new->rank = -1;
+	s_new->b_rank = NULL;
 	s_new->next = NULL;
 	return (s_new);
 }

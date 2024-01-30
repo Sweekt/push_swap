@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:49:13 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/24 16:38:25 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/30 18:22:21 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,12 @@ void	pile_ranker(t_pile **pile)
 	t_pile	*tiny;
 	int i;
 
-	i = 1;
-	while (i < ft_lst_size(pile))
+	i = 0;
+	while (i < ft_lst_size(pile) - 1)
 	{
 		tiny = find_smallest(pile);
 		tiny->rank = i;
+		tiny->b_rank = ft_itob(i);
 		i++;
 	}
 }
