@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:59:07 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/30 21:08:28 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/31 01:44:40 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int ft_is_int(char *str)
 	}
 	while (str[i])
 	{
-		res *= 10 + str[i] - 48;
+		res = res * 10 + str[i] - 48;
 		i++;
 	}
 	res *= sign;
@@ -79,6 +79,8 @@ int ft_is_number(char *str)
 	i = 0;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
+	if (i == 1 && ft_isdigit(str[i]) == 0)
+		return (0);
 	while (ft_isdigit(str[i]) == 1)
 		i++;
 	if (str[i] != 0)

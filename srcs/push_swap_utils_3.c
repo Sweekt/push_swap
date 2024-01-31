@@ -6,11 +6,31 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:03:01 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/30 19:30:06 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/30 19:34:35 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+int dupe_checker(t_pile **pile)
+{
+	t_pile	*tmp;
+	t_pile	*tmp2;
+
+	tmp = *pile;
+	while (tmp != NULL)
+	{
+		tmp2 = tmp->next;
+		while (tmp2 != NULL)
+		{
+			if (tmp->content == tmp2->content)
+				return (1);
+			tmp2 = tmp2-> next;
+		}
+		tmp = tmp->next;
+	}
+	return (0);
+}
 
 void	ft_nbr_len(int nbr, int *len)
 {

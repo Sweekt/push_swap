@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:49:13 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/30 18:51:08 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/30 21:09:36 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,26 +55,6 @@ void	pile_ranker(t_pile **pile)
 		tiny->b_rank = ft_itob(i);
 		i++;
 	}
-}
-
-int dupe_checker(t_pile **pile)
-{
-	t_pile	*tmp;
-	t_pile	*tmp2;
-
-	tmp = *pile;
-	while (tmp != NULL)
-	{
-		tmp2 = tmp->next;
-		while (tmp2 != NULL)
-		{
-			if (tmp->content == tmp2->content)
-				return (1);
-			tmp2 = tmp2-> next;
-		}
-		tmp = tmp->next;
-	}
-	return (0);
 }
 
 int params_checker(int ac, char **av)

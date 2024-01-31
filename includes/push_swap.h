@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:12:18 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/30 19:39:38 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/31 01:33:02 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 # include "../super_libft/libft.h"
 
 # define MAX_BIN 9
@@ -31,7 +32,6 @@ typedef struct s_pile
 
 t_pile	*params_parser(int ac, char **av);
 int		params_checker(int ac, char **av);
-int 	dupe_checker(t_pile **pile);
 void	pile_ranker(t_pile **pile);
 
 // Push Swap Utils
@@ -52,6 +52,7 @@ int		ft_is_int(char *str);
 
 // Push Swap Utils 3
 
+int 	dupe_checker(t_pile **pile);
 char	*ft_itob(unsigned int nbr);
 
 // Pile Swap
