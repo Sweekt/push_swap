@@ -6,30 +6,30 @@
 /*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:11:38 by beroy             #+#    #+#             */
-/*   Updated: 2024/02/01 16:18:50 by beroy            ###   ########.fr       */
+/*   Updated: 2024/02/01 17:07:19 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_small_small_sort(t_pile **a_pile, t_pile **b_pile)
+void	ft_small_small_sort(t_pile **a_pile, t_pile **b_pile, int i)
 {
-	if ((*a_pile)->rank == 0)
+	if ((*a_pile)->rank == 0 + i)
 	{
 		do_pb(a_pile, b_pile);
 		do_ra(a_pile);
 		do_pa(a_pile, b_pile);
 	}
-	else if ((*a_pile)->rank == 1)
+	else if ((*a_pile)->rank == 1 + i)
 	{
-		if ((*a_pile)->next->rank == 2)
+		if ((*a_pile)->next->rank == 2 + i)
 			do_rra(a_pile);
 		else
 			do_sa(a_pile);
 	}
 	else
 	{
-		if ((*a_pile)->next->rank == 1)
+		if ((*a_pile)->next->rank == 1 + i)
 		{
 			do_sa(a_pile);
 			do_rra(a_pile);
@@ -46,9 +46,9 @@ void	ft_small_sort(t_pile **a_pile, t_pile **b_pile)
 
 	i = 0;
 	pile_len = ft_lst_size(a_pile);
-	while (i < pile_len - 2)
+	while (i < pile_len - 3)
 	{
-		if ((*a_pile)->rank == i)
+		if ((*a_pile)->rank == 0 || (*a_pile)->rank == 1)
 		{
 			do_pb(a_pile, b_pile);
 			i++;
@@ -56,8 +56,9 @@ void	ft_small_sort(t_pile **a_pile, t_pile **b_pile)
 		else
 			do_ra(a_pile);
 	}
-	if ((*a_pile)->rank > (*a_pile)->next->rank)
+	if ((*b_pile)->rank < (*b_pile)->next->rank)
 		do_ra(a_pile);
+	ft_small_small_sort(a_pile, b_pile, i);
 	while (i > 0)
 	{
 		do_pa(a_pile, b_pile);
@@ -100,7 +101,7 @@ void	push_swap(t_pile **a_pile, t_pile **b_pile)
 	if (size == 2)
 		do_ra(a_pile);
 	else if (size == 3)
-		ft_small_small_sort(a_pile, b_pile);
+		ft_small_small_sort(a_pile, b_pile, 0);
 	else if (size <= 5)
 		ft_small_sort(a_pile, b_pile);
 	else
