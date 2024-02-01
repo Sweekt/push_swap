@@ -62,9 +62,5 @@ int	main(int ac, char **av)
 		return (ft_lst_clear(&a_pile), write(STDERR_FILENO, "Error\n", 6), 0);
 	pile_ranker(&a_pile);
 	push_swap(&a_pile, &b_pile);
-	if (stack_is_sorted(&a_pile, &b_pile) == 1)
-		ft_printf("OK!\n");
-	else
-		ft_printf("KO!\n");
 	ft_lst_clear(&a_pile);
 }
