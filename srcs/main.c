@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:24:41 by beroy             #+#    #+#             */
-/*   Updated: 2024/02/01 16:29:49 by beroy            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:46:17 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int	main(int ac, char **av)
 	ft_splitdestroy(av);
 	if (dupe_checker(&a_pile) == 1)
 		return (ft_lst_clear(&a_pile), write(STDERR_FILENO, "Error\n", 6), 0);
-	pile_ranker(&a_pile);
 	push_swap(&a_pile, &b_pile);
-	ft_lst_clear(&a_pile);
+	return (0);
 }

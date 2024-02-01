@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:11:38 by beroy             #+#    #+#             */
-/*   Updated: 2024/02/01 17:07:19 by beroy            ###   ########.fr       */
+/*   Updated: 2024/02/01 17:19:04 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void	ft_small_sort(t_pile **a_pile, t_pile **b_pile)
 		else
 			do_ra(a_pile);
 	}
-	if ((*b_pile)->rank < (*b_pile)->next->rank)
-		do_ra(a_pile);
+	if (i >= 2 && ((*b_pile)->rank < (*b_pile)->next->rank))
+		do_rb(b_pile);
 	ft_small_small_sort(a_pile, b_pile, i);
 	while (i > 0)
 	{
@@ -96,14 +96,14 @@ void	push_swap(t_pile **a_pile, t_pile **b_pile)
 	int size;
 
 	size = ft_lst_size(a_pile);
+	pile_ranker(a_pile);
 	if (stack_is_sorted(a_pile, b_pile) == 1)
 		return ;
 	if (size == 2)
 		do_ra(a_pile);
-	else if (size == 3)
-		ft_small_small_sort(a_pile, b_pile, 0);
 	else if (size <= 5)
 		ft_small_sort(a_pile, b_pile);
 	else
 		ft_big_sort(a_pile, b_pile);
+	ft_lst_clear(a_pile);
 }
