@@ -86,4 +86,8 @@ void	do_rrr(t_pile **a_pile, t_pile **b_pile);
 
 void	push_swap(t_pile **a_pile, t_pile **b_pile);
 
+// Main
+
+int 	small_stacked_sorted(t_pile **pile);
+
 #endif

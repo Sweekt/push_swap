@@ -6,7 +6,7 @@
 /*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:11:38 by beroy             #+#    #+#             */
-/*   Updated: 2024/02/01 18:29:41 by beroy            ###   ########.fr       */
+/*   Updated: 2024/02/01 21:01:51 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ void	ft_small_sort(t_pile **a_pile, t_pile **b_pile)
 	}
 	if (i >= 2 && ((*b_pile)->rank < (*b_pile)->next->rank))
 		do_rb(b_pile);
-	ft_small_small_sort(a_pile, b_pile, i);
+	if (small_stacked_sorted(a_pile) == 0)
+		ft_small_small_sort(a_pile, b_pile, i);
 	while (i > 0)
 	{
 		do_pa(a_pile, b_pile);
@@ -66,21 +67,40 @@ void	ft_small_sort(t_pile **a_pile, t_pile **b_pile)
 	}
 }
 
+int bit_is_sorted(t_pile **a_pile, int i)
+{
+	t_pile	*tmp;
+
+	if (*a_pile == NULL)
+		return (1);
+	tmp = *a_pile;
+	while (tmp != NULL)
+	{
+		if (tmp->b_rank[i] == '0')
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
 void	ft_big_sort(t_pile **a_pile, t_pile **b_pile)
 {
 	int i;
 	int j;
-	int pile_len;
+	int pile_size;
 
+	pile_size = ft_lst_size(a_pile);
 	i = MAX_BIN - 1;
-	pile_len = ft_lst_size(a_pile);
 	while (stack_is_sorted(a_pile, b_pile) == 0 && i >= 0)
 	{
 		j = 0;
-		while (j < pile_len)
+		while (j < pile_size)
 		{
 			if ((*a_pile)->b_rank[i] == '0')
-				do_pb(a_pile, b_pile);
+			{
+				if (j != pile_size - 1)
+					do_pb(a_pile, b_pile);
+			}
 			else
 				do_ra(a_pile);
 			j++;
@@ -105,5 +125,9 @@ void	push_swap(t_pile **a_pile, t_pile **b_pile)
 		ft_small_sort(a_pile, b_pile);
 	else
 		ft_big_sort(a_pile, b_pile);
+	/*if (stack_is_sorted(a_pile, b_pile) == 1)
+		ft_printf("OK!\n");
+	else
+		ft_printf("KO!\n");*/
 	ft_lst_clear(a_pile);
 }

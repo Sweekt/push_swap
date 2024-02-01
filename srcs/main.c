@@ -6,11 +6,25 @@
 /*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:24:41 by beroy             #+#    #+#             */
-/*   Updated: 2024/02/01 18:18:17 by beroy            ###   ########.fr       */
+/*   Updated: 2024/02/01 20:57:16 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+int small_stacked_sorted(t_pile **pile)
+{
+	t_pile	*tmp;
+
+	tmp = *pile;
+	while (tmp->next != NULL)
+	{
+		if (tmp->rank > tmp->next->rank)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
 
 char	**tab_shift(char **av, int ac)
 {
@@ -61,9 +75,5 @@ int	main(int ac, char **av)
 	if (dupe_checker(&a_pile) == 1)
 		return (ft_lst_clear(&a_pile), write(STDERR_FILENO, "Error\n", 6), 0);
 	push_swap(&a_pile, &b_pile);
-	if (stack_is_sorted(&a_pile, &b_pile) == 1)
-		ft_printf("OK!\n");
-	else
-		ft_printf("KO!\n");
 	return (0);
 }
