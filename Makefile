@@ -45,7 +45,9 @@ $(OBJS_D)%.o: $(SRCS_D)%.c ${HEADER}
 
 HEADER		= includes/push_swap.h
 
-all: libs $(OBJS_D) ${NAME}
+LIB_BIN	=	super_libft/libft.a
+
+all: libs $(OBJS_D) ${NAME} $(LIB_BIN)
 
 ${NAME}:	$(OBJS_D) $(OBJS) Makefile
 			@ cc ${FLAGS} -o $@ ${OBJS} super_libft/libft.a && echo "${GREEN}\n* ${NAME} compilation completed !!!\n${END}"
