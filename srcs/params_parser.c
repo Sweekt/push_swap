@@ -87,6 +87,8 @@ t_pile	*params_parser(int ac, char **av)
 	int	i;
 
 	a_pile = ft_lst_new(ft_atoi(av[0]));
+	if (a_pile == NULL)
+		return (ft_lst_clear(&a_pile), NULL);
 	i = 1;
 	while (i < ac - 1)
 	{

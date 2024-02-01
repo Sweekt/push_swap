@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:11:38 by beroy             #+#    #+#             */
-/*   Updated: 2024/02/01 17:19:04 by beroy            ###   ########.fr       */
+/*   Updated: 2024/02/01 18:29:41 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	push_swap(t_pile **a_pile, t_pile **b_pile)
 	size = ft_lst_size(a_pile);
 	pile_ranker(a_pile);
 	if (stack_is_sorted(a_pile, b_pile) == 1)
-		return ;
+		return (ft_lst_clear(a_pile), (void)0);
 	if (size == 2)
 		do_ra(a_pile);
 	else if (size <= 5)

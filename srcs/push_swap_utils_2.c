@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:59:07 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/31 01:44:40 by beroy            ###   ########.fr       */
+/*   Updated: 2024/02/01 17:56:41 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int stack_is_sorted(t_pile **a_pile, t_pile **b_pile)
 	t_pile	*tmp;
 	int 	i;
 
-	if (ft_lst_size(b_pile) != 0)
+	if (*b_pile != NULL || *a_pile == NULL)
 		return (0);
 	tmp = *a_pile;
 	i = 0;

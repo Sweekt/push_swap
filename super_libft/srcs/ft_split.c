@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:27:55 by beroy             #+#    #+#             */
-/*   Updated: 2023/11/14 13:50:14 by beroy            ###   ########.fr       */
+/*   Updated: 2024/02/01 18:29:13 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,21 +83,19 @@ char	**ft_split(char const *s, char c)
 	size_t	words;
 	char	**split;
 
-	/*if (!s)
-		return (NULL);*/
 	i = 0;
 	j = 0;
 	words = ft_countwords(s, c);
 	split = ft_calloc((words + 1), sizeof(char *));
 	if (!s[0] || split == NULL)
-		return (split);
+		exit (0);
 	while (i < words)
 	{
 		if (s[j] != c)
 		{
 			split[i++] = ft_superdup(s, c, &j);
 			if (split[i - 1] == NULL)
-				return (ft_splitdestroy(split));
+				return (ft_splitdestroy(split), exit(0), NULL);
 		}
 		else
 			j++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:24:41 by beroy             #+#    #+#             */
-/*   Updated: 2024/02/01 16:46:17 by beroy            ###   ########.fr       */
+/*   Updated: 2024/02/01 18:18:17 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	**tab_shift(char **av, int ac)
 
 	tab = malloc(sizeof(char *) * ac);
 	if (tab == NULL)
-		return (NULL);
+		exit (0);
 	i = 0;
 	while (i < ac - 1)
 	{
@@ -61,5 +61,9 @@ int	main(int ac, char **av)
 	if (dupe_checker(&a_pile) == 1)
 		return (ft_lst_clear(&a_pile), write(STDERR_FILENO, "Error\n", 6), 0);
 	push_swap(&a_pile, &b_pile);
+	if (stack_is_sorted(&a_pile, &b_pile) == 1)
+		ft_printf("OK!\n");
+	else
+		ft_printf("KO!\n");
 	return (0);
 }
