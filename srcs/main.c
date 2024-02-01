@@ -3,14 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:24:41 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/31 01:56:06 by beroy            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:29:49 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+char	**tab_shift(char **av, int ac)
+{
+	char	**tab;
+	int 	i;
+
+	tab = malloc(sizeof(char *) * ac);
+	if (tab == NULL)
+		return (NULL);
+	i = 0;
+	while (i < ac - 1)
+	{
+		tab[i] = ft_strdup(av[i + 1]);
+		if (tab[i] == NULL)
+		{
+			ft_splitdestroy(tab);
+			exit (0);
+		}
+		i++;
+	}
+	tab[i] = 0;
+	return (tab);
+}
 
 int	main(int ac, char **av)
 {
@@ -28,14 +51,20 @@ int	main(int ac, char **av)
 		ac = ft_tablen(av) + 1;
 	}
 	else
-		av++;
+		av = tab_shift(av, ac);
 	if (ac < 3)
-		return (0);
+		return (ft_splitdestroy(av), 0);
 	if (params_checker(ac, av) == 1)
-		return (write(STDERR_FILENO, "Error\n", 6), 0);
+		return (ft_splitdestroy(av), write(STDERR_FILENO, "Error\n", 6), 0);
 	a_pile = params_parser(ac, av);
+	ft_splitdestroy(av);
 	if (dupe_checker(&a_pile) == 1)
-		return (write(STDERR_FILENO, "Error\n", 6), 0);
+		return (ft_lst_clear(&a_pile), write(STDERR_FILENO, "Error\n", 6), 0);
 	pile_ranker(&a_pile);
 	push_swap(&a_pile, &b_pile);
+	if (stack_is_sorted(&a_pile, &b_pile) == 1)
+		ft_printf("OK!\n");
+	else
+		ft_printf("KO!\n");
+	ft_lst_clear(&a_pile);
 }

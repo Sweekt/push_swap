@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:37:25 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/30 18:49:20 by beroy            ###   ########.fr       */
+/*   Updated: 2024/02/01 15:47:12 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	ft_lst_clear(t_pile **lst)
 	while (*lst)
 	{
 		tmp = tmp->next;
+		if ((*lst)->b_rank != NULL)
+			free((*lst)->b_rank);
 		free(*lst);
 		*lst = tmp;
 	}

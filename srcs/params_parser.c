@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   params_parser.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:49:13 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/30 21:09:36 by beroy            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:33:17 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ void	pile_ranker(t_pile **pile)
 		tiny = find_smallest(pile);
 		tiny->rank = i;
 		tiny->b_rank = ft_itob(i);
+		if (tiny->b_rank == NULL)
+		{
+			ft_lst_clear(pile);
+			exit (0);
+		}
 		i++;
 	}
 }
