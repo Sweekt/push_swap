@@ -40,7 +40,6 @@ t_pile	*ft_lst_new(int content);
 t_pile	*ft_lst_last(t_pile *lst);
 void	ft_lst_add_back(t_pile **lst, t_pile *new);
 void	ft_lst_clear(t_pile **lst);
-void	ft_lst_display(t_pile **lst);
 
 // Push Swap Utils 2
 

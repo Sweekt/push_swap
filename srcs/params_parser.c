@@ -45,7 +45,7 @@ t_pile	*find_smallest(t_pile **pile)
 void	pile_ranker(t_pile **pile)
 {
 	t_pile	*tiny;
-	int i;
+	int		i;
 
 	i = 0;
 	while (i < ft_lst_size(pile))
@@ -62,7 +62,7 @@ void	pile_ranker(t_pile **pile)
 	}
 }
 
-int params_checker(int ac, char **av)
+int	params_checker(int ac, char **av)
 {
 	int	i;
 
@@ -84,7 +84,7 @@ t_pile	*params_parser(int ac, char **av)
 {
 	t_pile	*a_pile;
 	t_pile	*tmp;
-	int	i;
+	int		i;
 
 	a_pile = ft_lst_new(ft_atoi(av[0]));
 	if (a_pile == NULL)

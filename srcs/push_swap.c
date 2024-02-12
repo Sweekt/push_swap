@@ -6,7 +6,7 @@
 /*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:11:38 by beroy             #+#    #+#             */
-/*   Updated: 2024/02/01 21:01:51 by beroy            ###   ########.fr       */
+/*   Updated: 2024/02/12 12:50:23 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	ft_small_small_sort(t_pile **a_pile, t_pile **b_pile, int i)
 
 void	ft_small_sort(t_pile **a_pile, t_pile **b_pile)
 {
-	int i;
-	int pile_len;
+	int	i;
+	int	pile_len;
 
 	i = 0;
 	pile_len = ft_lst_size(a_pile);
@@ -67,27 +67,11 @@ void	ft_small_sort(t_pile **a_pile, t_pile **b_pile)
 	}
 }
 
-int bit_is_sorted(t_pile **a_pile, int i)
-{
-	t_pile	*tmp;
-
-	if (*a_pile == NULL)
-		return (1);
-	tmp = *a_pile;
-	while (tmp != NULL)
-	{
-		if (tmp->b_rank[i] == '0')
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
-}
-
 void	ft_big_sort(t_pile **a_pile, t_pile **b_pile)
 {
-	int i;
-	int j;
-	int pile_size;
+	int	i;
+	int	j;
+	int	pile_size;
 
 	pile_size = ft_lst_size(a_pile);
 	i = MAX_BIN - 1;
@@ -113,7 +97,7 @@ void	ft_big_sort(t_pile **a_pile, t_pile **b_pile)
 
 void	push_swap(t_pile **a_pile, t_pile **b_pile)
 {
-	int size;
+	int	size;
 
 	size = ft_lst_size(a_pile);
 	pile_ranker(a_pile);
@@ -125,9 +109,5 @@ void	push_swap(t_pile **a_pile, t_pile **b_pile)
 		ft_small_sort(a_pile, b_pile);
 	else
 		ft_big_sort(a_pile, b_pile);
-	/*if (stack_is_sorted(a_pile, b_pile) == 1)
-		ft_printf("OK!\n");
-	else
-		ft_printf("KO!\n");*/
 	ft_lst_clear(a_pile);
 }

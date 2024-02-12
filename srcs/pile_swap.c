@@ -14,10 +14,10 @@
 
 void	ft_swap(t_pile **pile)
 {
-	t_pile *tmp;
+	t_pile	*tmp;
 
 	if (ft_lst_size(pile) < 2)
-		return;
+		return ;
 	tmp = (*pile)->next;
 	(*pile)->next = tmp->next;
 	tmp->next = *pile;

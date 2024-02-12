@@ -6,16 +6,16 @@
 /*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:59:07 by beroy             #+#    #+#             */
-/*   Updated: 2024/02/01 17:57:46 by beroy            ###   ########.fr       */
+/*   Updated: 2024/02/12 12:47:50 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int stack_is_sorted(t_pile **a_pile, t_pile **b_pile)
+int	stack_is_sorted(t_pile **a_pile, t_pile **b_pile)
 {
 	t_pile	*tmp;
-	int 	i;
+	int		i;
 
 	if (*b_pile != NULL || *a_pile == NULL)
 		return (0);
@@ -31,9 +31,9 @@ int stack_is_sorted(t_pile **a_pile, t_pile **b_pile)
 	return (1);
 }
 
-int ft_lst_size(t_pile **lst)
+int	ft_lst_size(t_pile **lst)
 {
-	int i;
+	int		i;
 	t_pile	*tmp;
 
 	i = 0;
@@ -46,11 +46,11 @@ int ft_lst_size(t_pile **lst)
 	return (i);
 }
 
-int ft_is_int(char *str)
+int	ft_is_int(char *str)
 {
-	int i;
+	int			i;
 	long int	res;
-	int sign;
+	int			sign;
 
 	i = 0;
 	sign = 1;
@@ -72,9 +72,9 @@ int ft_is_int(char *str)
 	return (1);
 }
 
-int ft_is_number(char *str)
+int	ft_is_number(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str[i] == '-' || str[i] == '+')
@@ -90,7 +90,7 @@ int ft_is_number(char *str)
 
 int	ft_tablen(char **tab)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (tab[i])

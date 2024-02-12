@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-int small_stacked_sorted(t_pile **pile)
+int	small_stacked_sorted(t_pile **pile)
 {
 	t_pile	*tmp;
 
@@ -29,7 +29,7 @@ int small_stacked_sorted(t_pile **pile)
 char	**tab_shift(char **av, int ac)
 {
 	char	**tab;
-	int 	i;
+	int		i;
 
 	tab = malloc(sizeof(char *) * ac);
 	if (tab == NULL)

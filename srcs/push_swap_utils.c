@@ -12,18 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-void	ft_lst_display(t_pile **lst)
-{
-	t_pile	*tmp;
-
-	tmp = *lst;
-	while (tmp != NULL)
-	{
-		ft_printf("Content : %d || Rank : %d || B_rank : %s\n", tmp->content, tmp->rank, tmp->b_rank);
-		tmp = tmp->next;
-	}
-}
-
 void	ft_lst_clear(t_pile **lst)
 {
 	t_pile	*tmp;

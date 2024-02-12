@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-int dupe_checker(t_pile **pile)
+int	dupe_checker(t_pile **pile)
 {
 	t_pile	*tmp;
 	t_pile	*tmp2;
@@ -58,8 +58,8 @@ void	ft_nbr_to_str(unsigned int nbr, char *str, int *i)
 
 char	*ft_itob(unsigned int nbr)
 {
-	int len;
-	int i;
+	int		len;
+	int		i;
 	char	*res;
 
 	len = 0;
