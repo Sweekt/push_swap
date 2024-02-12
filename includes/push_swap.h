@@ -22,7 +22,7 @@
 
 typedef struct s_pile
 {
-	int 			content;
+	int				content;
 	int				rank;
 	char			*b_rank;
 	struct s_pile	*next;
@@ -43,15 +43,15 @@ void	ft_lst_clear(t_pile **lst);
 
 // Push Swap Utils 2
 
-int 	stack_is_sorted(t_pile **a_pile, t_pile **b_pile);
-int 	ft_lst_size(t_pile **lst);
+int		stack_is_sorted(t_pile **a_pile, t_pile **b_pile);
+int		ft_lst_size(t_pile **lst);
 int		ft_tablen(char **tab);
-int 	ft_is_number(char *str);
+int		ft_is_number(char *str);
 int		ft_is_int(char *str);
 
 // Push Swap Utils 3
 
-int 	dupe_checker(t_pile **pile);
+int		dupe_checker(t_pile **pile);
 char	*ft_itob(unsigned int nbr);
 
 // Pile Swap
@@ -87,6 +87,6 @@ void	push_swap(t_pile **a_pile, t_pile **b_pile);
 
 // Main
 
-int 	small_stacked_sorted(t_pile **pile);
+int		small_stacked_sorted(t_pile **pile);
 
 #endif
