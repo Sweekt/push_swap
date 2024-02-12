@@ -1,94 +1,77 @@
-# $@ : NAME de la regle
-# $^ : tous les OBJS
-# $< : premiere dependance
+########################################################################################################################
+#                                                       VARIABLE                                                       #
+########################################################################################################################
 
-GREY		= \033[30m
-RED			= \033[31m
-GREEN		= \033[32m
-ORANGE		= \033[33m
-BLUE		= \033[34m
-PURPLE		= \033[35m
-LIGHTBLUE	= \033[36m
-WHITE		= \033[37m
-IRED		= \033[41m
-IWHITE		= \033[47m
-IBLUE		= \033[44m
-IPURPLE		= \033[45m
-END			= \033[0m
-
-NAME		=	push_swap
-
-DISPLAY		=	display
-
-FLAGS		=	-Wall -Wextra -Werror -I includes/ -I libs/libft -g3 -fsanitize=address
-
-SRCS		=	main.c					\
+SRCS		:=	main.c					\
 				params_parser.c			\
+				pile_push.c				\
+				pile_reverse_rotate.c	\
+				pile_rotate.c			\
+				pile_swap.c				\
+				push_swap.c				\
 				push_swap_utils.c		\
 				push_swap_utils_2.c		\
-				push_swap_utils_3.c		\
-				pile_swap.c				\
-				pile_push.c				\
-				pile_rotate.c			\
-				pile_reverse_rotate.c	\
-				push_swap.c
+				push_swap_utils_3.c
 
-SRCS_D	:=	srcs/
+SRCS_D		:=	srcs/
 
-OBJS_D	:=	objs/
+OBJS_D		:=	objs/
 
-OBJS	:=	$(addprefix $(OBJS_D), $(SRCS:.c=.o))
+OBJS		:=	$(SRCS:%.c=$(OBJS_D)%.o)
 
-$(OBJS_D)%.o: $(SRCS_D)%.c ${HEADER}
-	@mkdir -p $(@D)
-	@cc ${FLAGS} -c $< -o $@ && echo "  $@"
+HEAD		:=	includes/push_swap.h
 
-HEADER		= includes/push_swap.h
+HEAD_D		:=	.
 
-LIB_BIN	=	super_libft/libft.a
+CFLAGS		:=	-Wall -Wextra -Werror -g3
 
-all: libs $(OBJS_D) ${NAME} $(LIB_BIN)
+NAME		:=	push_swap
 
-${NAME}:	$(OBJS_D) $(OBJS) Makefile
-			@ cc ${FLAGS} -o $@ ${OBJS} super_libft/libft.a && echo "${GREEN}\n* ${NAME} compilation completed !!!\n${END}"
+########################################################################################################################
+#                                                         LIB                                                          #
+########################################################################################################################
 
-libs:
-	${MAKE} -C super_libft
+LIB			:=	libft.a
 
-$(OBJS_D):
-	@mkdir -p $@
+LIB_D		:=	super_libft/
 
-%.o: %.c ${HEADER}
-	@ cc ${FLAGS} -c $< -o $@ && echo "  $@"
+LIB_I		:=	$(LIB_D)
 
-clean:
-	@ ${RM} -rf ${OBJS} $(OBJS_D) && echo "${RED} * object cleared...${END}"
+LIB_H		:=	$(LIB_I)libft.h
 
-fclean: clean
-	@ ${RM} ${NAME} && echo "${RED} * everything is cleared...${END}"
-	$(MAKE) fclean -C super_libft
+LIB_A		:=	$(addprefix $(LIB_D), $(LIB))
 
-re:	fclean
-	${MAKE} all
+########################################################################################################################
+#                                                        RULES                                                         #
+########################################################################################################################
 
-sus:
-	@echo "${BLUE}           ⣠⣤⣤⣤⣤⣤⣶⣦⣤⣄⡀        ${END}"
-	@echo "${BLUE}        ⢀⣴⣿⡿⠛⠉⠙⠛⠛⠛⠛⠻⢿⣿⣷⣤⡀     ${END}"
-	@echo "${BLUE}        ⣼⣿⠋       ${WHITE}⢀⣀⣀${BLUE}⠈⢻⣿⣿⡄    ${END}"
-	@echo "${BLUE}       ⣸⣿⡏   ${WHITE}⣠⣶⣾⣿⣿⣿⠿⠿⠿⢿⣿⣿⣿⣄   ${END}"
-	@echo "${BLUE}       ⣿⣿⠁  ${WHITE}⢰⣿⣿⣯⠁       ⠈⠙⢿⣷⡄ ${END}"
-	@echo "${BLUE}  ⣀⣤⣴⣶⣶⣿⡟   ${WHITE}⢸⣿⣿⣿⣆          ⣿⣷ ${END}"
-	@echo "${BLUE} ⢰⣿⡟⠋⠉⣹⣿⡇   ${WHITE}⠘⣿⣿⣿⣿⣷⣦⣤⣤⣤⣶⣶⣶⣶⣿⣿⣿ ${END}"
-	@echo "${BLUE} ⢸⣿⡇  ⣿⣿⡇    ${WHITE}⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃ ${END}"
-	@echo "${BLUE} ⣸⣿⡇  ⣿⣿⡇     ${WHITE}⠉⠻⠿⣿⣿⣿⣿⡿⠿⠿⠛${BLUE}⢻⣿⡇  ${END}"
-	@echo "${BLUE} ⠸⣿⣧⡀ ⣿⣿⡇                ⣿⣿⠃  ${END}"
-	@echo "${BLUE}  ⠛⢿⣿⣿⣿⣿⣇     ⣰⣿⣿⣷⣶⣶⣶⣶⠶ ⢠⣿⣿   ${END}"
-	@echo "${BLUE}       ⣿⣿     ⣿⣿⡇ ⣽⣿⡏⠁  ⢸⣿⡇   ${END}"
-	@echo "${BLUE}       ⣿⣿     ⣿⣿⡇ ⢹⣿⡆   ⣸⣿⠇   ${END}"
-	@echo "${BLUE}       ⢿⣿⣦⣄⣀⣠⣴⣿⣿⠁ ⠈⠻⣿⣿⣿⣿⡿⠏    ${END}"
-	@echo "${BLUE}       ⠈⠛⠻⠿⠿⠿⠿⠋⠁              ${END}"
-	@echo "$(IBLUE)         ░█▀▀░█░█░█▀▀         ${END}"
-	@echo "$(IBLUE)         ░▀▀█░█░█░▀▀█         ${END}"
-	@echo "$(IBLUE)         ░▀▀▀░▀▀▀░▀▀▀         ${END}"
+all			:	lib
+				$(MAKE) $(NAME)
 
-.PHONY: all libs clean fclean re
+lib			:
+				$(MAKE) -C $(LIB_D)
+
+$(NAME)		:	$(OBJS_D) $(OBJS) $(LIB_A) $(HEAD)
+				$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIB_A)
+
+$(OBJS)		:	$(OBJS_D)%.o: $(SRCS_D)%.c $(HEAD) $(LIB_H)
+				$(CC) $(CFLAGS) -I/usr/include -Isuper_libft -c $< -o $@
+
+$(OBJS_D)	:
+				@mkdir -p $(OBJS_D)
+
+########################################################################################################################
+#                                                        COMMANDS                                                      #
+########################################################################################################################
+
+clean		:
+				$(RM) -r $(OBJS) $(OBJS_D)
+				$(MAKE) clean -C super_libft
+
+fclean		:	clean
+				$(RM) $(NAME) $(NAME_B)
+				$(MAKE) fclean -C super_libft
+
+re			:	fclean all
+
+.PHONY: all clean fclean re lib
